@@ -13,7 +13,7 @@ import javax.persistence.Id;
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Player {
+public class PlayerEntity {
 
     @Id
     @EqualsAndHashCode.Include
