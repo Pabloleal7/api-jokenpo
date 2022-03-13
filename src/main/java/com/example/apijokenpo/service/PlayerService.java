@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -23,14 +24,17 @@ public class PlayerService {
 
         PlayerEntity savedEntity = playerRepository.save(entity);
 
-        PlayerResponseDTO dto = ConverterUtil.toDTO(savedEntity);
-        return dto;
+        return ConverterUtil.toDTO(savedEntity);
     }
 
     public List<PlayerResponseDTO> getAll() {
 
         return getAllStream().collect(Collectors.toList());
 
+    }
+
+    public PlayerResponseDTO getOneById(Long id){
+        return ConverterUtil.toDTO(Objects.requireNonNull(playerRepository.findById(id).orElse(null)));
     }
 
     public Stream<PlayerResponseDTO> getAllStream() {
