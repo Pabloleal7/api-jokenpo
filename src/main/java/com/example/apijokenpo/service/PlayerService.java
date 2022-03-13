@@ -20,6 +20,7 @@ public class PlayerService {
         PlayerEntity savedEntity =  playerRepository.save(entity);
 
         PlayerResponseDTO dto = ConverterUtil.toDTO(savedEntity);
+        return  dto;
     }
 
 }
