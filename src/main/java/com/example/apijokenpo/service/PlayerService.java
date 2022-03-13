@@ -6,6 +6,7 @@ import com.example.apijokenpo.entity.PlayerEntity;
 import com.example.apijokenpo.repository.PlayerRepository;
 import com.example.apijokenpo.util.ConverterUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,6 +36,14 @@ public class PlayerService {
 
     public PlayerResponseDTO getOneById(Long id){
         return ConverterUtil.toDTO(Objects.requireNonNull(playerRepository.findById(id).orElse(null)));
+    }
+
+    public PlayerResponseDTO delete(Long id){
+
+
+        return ConverterUtil.toDTO(playerRepository.findById(id).map(record -> {
+            playerRepository.deleteById(id);
+        }).get());
     }
 
     public Stream<PlayerResponseDTO> getAllStream() {
