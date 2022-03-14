@@ -1,4 +1,5 @@
 package com.example.apijokenpo.service;
+
 import com.example.apijokenpo.dto.request.CreateInputDTO;
 import com.example.apijokenpo.dto.response.InputResponseDTO;
 import com.example.apijokenpo.entity.InputEntity;
@@ -17,14 +18,32 @@ import java.util.stream.Stream;
 public class InputService {
 
     @Autowired
-   InputRepository inputRepository;
+    InputRepository inputRepository;
+
 
     public InputResponseDTO create(CreateInputDTO createInputDTO) {
-        InputEntity entity = ConverterUtil.inputToEntity(createInputDTO);
 
-        InputEntity savedEntity = inputRepository.save(entity);
+        Integer inputsLength = 0;
 
-        return ConverterUtil.inputToDTO(savedEntity);
+        for (InputResponseDTO inputResponseDTO : getAll()) {
+            if (inputResponseDTO.getMatchEntity().getId() == createInputDTO.getMatchEntity().getId()) {
+                inputsLength++;
+            }
+
+        }
+
+        if (inputsLength < 3) {
+            InputEntity entity = ConverterUtil.inputToEntity(createInputDTO);
+
+            InputEntity savedEntity = inputRepository.save(entity);
+
+            return ConverterUtil.inputToDTO(savedEntity);
+
+        }
+
+        return null;
+
+
     }
 
     public List<InputResponseDTO> getAll() {
@@ -33,11 +52,11 @@ public class InputService {
 
     }
 
-    public InputResponseDTO getOneById(Long id){
+    public InputResponseDTO getOneById(Long id) {
         return ConverterUtil.inputToDTO(Objects.requireNonNull(inputRepository.findById(id).orElse(null)));
     }
 
-    public void delete(Long id){
+    public void delete(Long id) {
         inputRepository.deleteById(id);
     }
 

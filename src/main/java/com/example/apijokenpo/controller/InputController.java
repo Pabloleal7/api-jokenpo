@@ -7,6 +7,8 @@ import com.example.apijokenpo.dto.response.InputResponseDTO;
 import com.example.apijokenpo.dto.response.PlayerResponseDTO;
 import com.example.apijokenpo.service.InputService;
 import com.example.apijokenpo.service.PlayerService;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -36,9 +38,16 @@ public class InputController {
      */
 
     @PostMapping
-    public ResponseEntity<Void> createPlayer(@RequestBody CreateInputDTO createInputDTO) {
+    public ResponseEntity<String> createInput(@RequestBody CreateInputDTO createInputDTO) {
         InputResponseDTO response = inputService.create(createInputDTO);
-        return ResponseEntity.created(URI.create("http://localhost:8080/inputs/" + response.getId())).build();
+
+        String msg = "Limite De jogadas nesta partida Excedido";
+
+        if (response != null){
+            return ResponseEntity.created(URI.create("http://localhost:8080/inputs/" + response.getId())).build();
+        }
+        return ResponseEntity.badRequest().body(msg);
+
 
     }
 

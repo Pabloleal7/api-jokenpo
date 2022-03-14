@@ -34,12 +34,14 @@ public class MatchController {
      */
 
     @PostMapping
-    public ResponseEntity<Void> createMatch() {
+    public ResponseEntity<MatchEntity> createMatch() {
         MatchEntity matchEntity = new MatchEntity();
 
         MatchEntity response = matchService.create(matchEntity);
 
-        return ResponseEntity.created(URI.create("http://localhost:8080/matchs/" + response.getId())).build();
+
+
+        return ResponseEntity.created(URI.create("http://localhost:8080/matchs/" + response.getId())).body(response);
 
     }
 
