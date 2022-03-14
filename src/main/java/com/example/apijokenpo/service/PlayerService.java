@@ -38,12 +38,8 @@ public class PlayerService {
         return ConverterUtil.toDTO(Objects.requireNonNull(playerRepository.findById(id).orElse(null)));
     }
 
-    public PlayerResponseDTO delete(Long id){
-
-
-        return ConverterUtil.toDTO(playerRepository.findById(id).map(record -> {
-            playerRepository.deleteById(id);
-        }).get());
+    public void delete(Long id){
+        playerRepository.deleteById(id);
     }
 
     public Stream<PlayerResponseDTO> getAllStream() {
