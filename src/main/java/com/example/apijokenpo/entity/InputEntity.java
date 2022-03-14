@@ -2,27 +2,29 @@ package com.example.apijokenpo.entity;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 
 import javax.persistence.*;
 
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Data
+@Getter
+@Setter
 @Entity
 public class InputEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @EqualsAndHashCode.Include
     private long id;
 
     @ManyToOne
-    @JoinColumn(name = "player_entity_id")
+    private MatchEntity matchEntity;
+
+    @ManyToOne
     private PlayerEntity playerEntity;
 
-
-
-
+    private InputsEnum inputsEnum;
 
 
 
