@@ -5,13 +5,16 @@ import com.example.apijokenpo.util.PlayerCombate;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 public class ResultResponseDTO {
 
-    private PlayerCombate player1;
-    private PlayerCombate player2;
-    private PlayerCombate player3;
+    private List<PlayerCombate> playerCombateList;
+    private String mensagem;
+
+
 
 
 
