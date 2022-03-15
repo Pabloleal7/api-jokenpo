@@ -20,7 +20,7 @@ public class InputService {
     @Autowired
     InputRepository inputRepository;
 
-
+    //Nada performatico mas é funcional
     public InputResponseDTO create(CreateInputDTO createInputDTO) {
 
         Integer inputsLength = 0;
