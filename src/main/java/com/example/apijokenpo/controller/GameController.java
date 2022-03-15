@@ -16,8 +16,16 @@ public class GameController {
     @Autowired
     GameService gameService;
 
+    /**
+     * Metodo responsavel por fornecer o resultado de uma partida.
+     * @param id
+     * @return
+     */
+
     @GetMapping("/{id}")
     public ResponseEntity<ResultResponseDTO> result(@PathVariable Long id){
+        ResultResponseDTO dto = gameService.result(id);
+        System.out.println(dto.getMensagem());
 
       return ResponseEntity.ok(gameService.result(id)) ;
 

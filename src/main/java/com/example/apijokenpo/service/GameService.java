@@ -1,4 +1,5 @@
 package com.example.apijokenpo.service;
+
 import com.example.apijokenpo.dto.response.InputResponseDTO;
 import com.example.apijokenpo.dto.response.ResultResponseDTO;
 import com.example.apijokenpo.util.Play;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -19,14 +21,11 @@ public class GameService {
 
     public ResultResponseDTO result(Long id) {
 
+
         ResultResponseDTO dto = new ResultResponseDTO();
 
 
         List<PlayerCombate> playerCombateList = new ArrayList<>();
-
-        PlayerCombate p1 = playerCombateList.get(0);
-        PlayerCombate p2 = playerCombateList.get(1);
-        PlayerCombate p3 = playerCombateList.get(3);
 
 
         for (InputResponseDTO input : inputService.getAll()) {
@@ -43,6 +42,15 @@ public class GameService {
 
         }
 
+
+
+
+
+        PlayerCombate p1 = playerCombateList.get(0);
+        PlayerCombate p2 = playerCombateList.get(1);
+        PlayerCombate p3 = playerCombateList.get(2);
+
+
         playerCombateList.set(0, Play.combat(p1, p2));
         playerCombateList.set(0, Play.combat(p1, p3));
 
@@ -53,9 +61,21 @@ public class GameService {
         playerCombateList.set(2, Play.combat(p3, p2));
 
 
+        for (PlayerCombate playerCombate : playerCombateList
+        ) {
+
+            if (playerCombate.getPoints() >= 2) {
+                dto.setMensagem(playerCombate.getName() + " Ganhou");
+                break;
+            } else {
+                dto.setMensagem("Empate");
+            }
+
+
+        }
+
 
         dto.setPlayerCombateList(playerCombateList);
-        dto.setMensagem("Teste");
 
 
         return dto;

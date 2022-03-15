@@ -31,10 +31,10 @@ public class InputController {
 
 
     /**
-     * Método que cria o player
+     * Método que cria as jogadas
      *
      * @param createInputDTO
-     * @return ResponseEntity<Void>
+     * @return
      */
 
     @PostMapping
@@ -52,7 +52,7 @@ public class InputController {
     }
 
     /**
-     * Metodo que retorna  uma lista de Players
+     * Metodo que retorna uma lista de jogadas
      *
      * @return PlayerResponseDTO
      */
@@ -66,10 +66,10 @@ public class InputController {
 
 
     /**
-     * Metodo que Retorna um Player pelo id
+     * Metodo que Retorna uma jogada pelo id
      *
      * @param id
-     * @return ResponseEntity<PlayerResponseDTO>
+     * @return
      */
 
     @GetMapping("/{id}")
@@ -79,7 +79,7 @@ public class InputController {
     }
 
     /**
-     * Metodo que deleta um player
+     * Metodo que deleta uma jogada
      * @param id
      * @return
      */

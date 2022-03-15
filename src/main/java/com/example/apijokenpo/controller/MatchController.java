@@ -28,7 +28,7 @@ public class MatchController {
 
 
     /**
-     * Método que cria o player
+     * Método que cria uma partida
      *
      * @return ResponseEntity<Void>
      */
@@ -46,9 +46,9 @@ public class MatchController {
     }
 
     /**
-     * Metodo que retorna  uma lista de Players
+     * Metodo que retorna  uma lista de partidas
      *
-     * @return PlayerResponseDTO
+     * @return
      */
 
     @GetMapping
@@ -60,10 +60,10 @@ public class MatchController {
 
 
     /**
-     * Metodo que Retorna um Player pelo id
+     * Metodo que Retorna uma partida pelo id
      *
      * @param id
-     * @return ResponseEntity<PlayerResponseDTO>
+     * @return
      */
 
     @GetMapping("/{id}")
@@ -73,7 +73,7 @@ public class MatchController {
     }
 
     /**
-     * Metodo que deleta um player
+     * Metodo que deleta uma partida
      *
      * @param id
      * @return
