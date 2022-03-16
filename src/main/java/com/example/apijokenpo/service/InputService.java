@@ -20,6 +20,12 @@ public class InputService {
     @Autowired
     InputRepository inputRepository;
 
+    /**
+     * Metodo que salva a jogada no banco de dados
+     * @param createInputDTO
+     * @return
+     */
+
     //Nada performatico mas é funcional
     public InputResponseDTO create(CreateInputDTO createInputDTO) {
 
@@ -45,6 +51,11 @@ public class InputService {
 
 
     }
+
+    /**
+     * Metodo que retorna uma lista das jogadas que estão salvas no banco de dados
+     * @return
+     */
 
     public List<InputResponseDTO> getAll() {
 

@@ -1,15 +1,11 @@
 package com.example.apijokenpo.service;
-
 import com.example.apijokenpo.dto.response.InputResponseDTO;
 import com.example.apijokenpo.dto.response.ResultResponseDTO;
 import com.example.apijokenpo.util.Play;
 import com.example.apijokenpo.util.PlayerCombate;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -19,6 +15,11 @@ public class GameService {
     InputService inputService;
 
 
+    /**
+     * Metodo que retorna o resultado de uma partida
+     * @param id
+     * @return
+     */
     public ResultResponseDTO result(Long id) {
 
 
