@@ -166,7 +166,7 @@ Após utilizar o Método POST na rota acima e retornado o ID da partida, guarde 
 
 Agora criaremos as jogadas de cada jogador utilizando o ID dos jogadores e da Partida como no exemplo seguinte.
 
-Jogada 1
+Jogada 1 - Player 1 Pablo - /* Spock */
 ```http
   POST /inputs 
 {
@@ -176,13 +176,13 @@ Jogada 1
     "playerEntity":{
         "id": 1 
     },
-    "inputsEnum":0 /* Spock */
+    "inputsEnum":0 
 }
 
   
 ```
 
-Jogada 2
+Jogada 2 - Player 2 Buiu -  /* Tesoura */
 ```http
   POST /inputs 
 {
@@ -192,13 +192,13 @@ Jogada 2
     "playerEntity":{
         "id": 2 
     },
-    "inputsEnum":1  /* Tesoura */
+    "inputsEnum":1 
 }
 
 
 ```
 
-Jogada 3
+Jogada 3 - Player 3 Monica - /* Pedra */
 ```http
   POST /inputs 
 {
@@ -208,7 +208,7 @@ Jogada 3
     "playerEntity":{
         "id": 3 
     },
-    "inputsEnum":3 /* Pedra */
+    "inputsEnum":3 
 }
 
 ```
